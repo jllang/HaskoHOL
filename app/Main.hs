@@ -12,14 +12,6 @@ main = putStrLn "Hello, World!"
 formula1 :: Formula
 formula1 = Atom "p1" :& Atom "p2" -- (p1 & p2) informally for some propositional symbols p1, p2
 
--- proof1 :: Proof
--- proof1 =
---     let
---         {- {} ⊢ A -} t1 = axiom (Atom "A")
---         {- {} ⊢ B -} t2 = axiom (Atom "B")
---      in
---         {- {} ⊢ A & B -} conjIntro `appliedTo` (t1, t2)
-
 proof2 :: Proof
 proof2 =
     let

@@ -6,7 +6,6 @@ module Haskohol (
     tautology,
     inconsistent,
     conclusion,
-    -- axiom,
     botElim,
     botIntro,
     conjElim1,
@@ -56,11 +55,3 @@ import Rules.Logical (
 import Rules.Structural (
     weaken,
  )
-
--- {-
-
---    ------------
---       {} ⊢ A
--- -}
--- axiom :: Rule Formula
--- axiom f = QED $ Theorem Set.empty f
