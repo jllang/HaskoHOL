@@ -1,0 +1,48 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.38.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           haskohol
+version:        0.0.1
+build-type:     Simple
+
+library
+  exposed-modules:
+      Base
+      Combinators
+      Haskohol
+      Logic
+      Rules.Logical
+      Rules.Structural
+  other-modules:
+      Paths_haskohol
+  hs-source-dirs:
+      src
+  default-extensions:
+      LambdaCase
+      NamedFieldPuns
+      OverloadedRecordDot
+  build-depends:
+      base
+    , containers
+    , regex-tdfa
+  default-language: Haskell2010
+
+executable haskohol
+  main-is: Main.hs
+  other-modules:
+      Paths_haskohol
+  hs-source-dirs:
+      app
+  default-extensions:
+      LambdaCase
+      NamedFieldPuns
+      OverloadedRecordDot
+  build-depends:
+      base
+    , containers
+    , haskohol
+    , regex-tdfa
+  default-language: Haskell2010

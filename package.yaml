@@ -1,0 +1,22 @@
+name: haskohol
+version: 0.0.1
+
+default-extensions:
+  - LambdaCase
+  - NamedFieldPuns
+  - OverloadedRecordDot
+
+library:
+  source-dirs: src
+
+executables:
+  haskohol:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+      - haskohol
+
+dependencies:
+  - base
+  - containers
+  - regex-tdfa
