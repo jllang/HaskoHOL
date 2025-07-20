@@ -13,9 +13,9 @@ library
       Base
       Combinators
       Haskohol
-      Logic
       Rules.Logical
       Rules.Structural
+      Theorems
   other-modules:
       Paths_haskohol
   hs-source-dirs:
