@@ -79,6 +79,32 @@ conjElim2 = \case
     _ -> Malformed
 
 {-
+      H ⊢ A
+   ---------------
+      H ⊢ A | B
+-}
+disjIntro1 :: Rule (Formula, Theorem)
+disjIntro1 (f, t) = QED $ t{consequent = t.consequent :| f}
+
+{-
+      H ⊢ B
+   ---------------
+      H ⊢ A | B
+-}
+disjIntro2 :: Rule (Formula, Theorem)
+disjIntro2 (f, t) = QED $ t{consequent = f :| t.consequent}
+
+{-
+      H ⊢ A | B     H, A ⊢ C     H, B ⊢ C
+   -----------------------------------------
+                       H ⊢ C
+-}
+disjElim :: Rule (Theorem, Theorem, Theorem)
+disjElim (Theorem as1 (a :| b), Theorem as2 c2, Theorem as3 c3)
+    | c2 == c3 && as2 == Set.insert a as1 && as3 == Set.insert b as1 = QED $ Theorem as1 c2
+disjElim _ = Malformed
+
+{-
       H,A ⊢ B
    -----------------
         H ⊢ A > B
