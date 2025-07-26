@@ -24,14 +24,20 @@ data Formula
     deriving (Eq, Ord)
 
 instance Show Formula where
-    show = \case
-        Top -> "⊤"
-        Bot -> "⊥"
-        Atom s -> '\'' : s
-        a :& b -> show a ++ " & " ++ show b
-        a :| b -> show a ++ " | " ++ show b
-        a :> b -> show a ++ " > " ++ show b
-        Not a -> show "~" ++ show a
+    show f = case f of
+        a :& b -> show' a ++ " & " ++ show' b
+        a :| b -> show' a ++ " | " ++ show' b
+        a :> b -> show' a ++ " → " ++ show' b
+        otherwise -> show' f
+      where
+        show' = \case
+            Top -> "⊤"
+            Bot -> "⊥"
+            Atom s -> '\'' : s
+            Not a -> "~" ++ show' a
+            a :& b -> "(" ++ show' a ++ " & " ++ show' b ++ ")"
+            a :| b -> "(" ++ show' a ++ " | " ++ show' b ++ ")"
+            a :> b -> "(" ++ show' a ++ " → " ++ show' b ++ ")"
 
 instance IsString Formula where
     fromString s
